@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#c9a227">
+  <title>Absolut 360 | Productos & Merchandising</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Barra promo (estilo demo Absolut 360) -->
+  <div class="live-ticker" id="promoTicker" role="marquee" aria-label="Promociones">
+    <div class="ticker-track">
+      <span class="ticker-item">🎟️ Cupón <strong>BIENVENIDO10</strong> → 10% dto.</span>
+      <span class="ticker-item">🔥 Ofertas del día actualizadas</span>
+      <span class="ticker-item">🛡️ Garantía de 1 año en productos</span>
+      <span class="ticker-item">💬 Chat en vivo disponible 24/7</span>
+      <span class="ticker-item">🚚 Envío gratis en compras +S/50</span>
+      <span class="ticker-item">⭐ 2 ofertas activas ahora</span>
+      <span class="ticker-item">🎟️ Cupón <strong>BIENVENIDO10</strong> → 10% dto.</span>
+      <span class="ticker-item">🔥 Ofertas del día actualizadas</span>
+      <span class="ticker-item">🛡️ Garantía de 1 año en productos</span>
+      <span class="ticker-item">💬 Chat en vivo disponible 24/7</span>
+      <span class="ticker-item">🚚 Envío gratis en compras +S/50</span>
+      <span class="ticker-item">⭐ 2 ofertas activas ahora</span>
+    </div>
+  </div>
+
+  <div class="nav-backdrop" id="navBackdrop" aria-hidden="true"></div>
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="header-left">
+        <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" type="button">
+          <span></span><span></span><span></span>
+        </button>
+        <a href="app.html" class="logo" aria-label="Absolut 360">
+          <img src="images/logo-absolut360.png" alt="Absolut 360" class="logo-img">
+          <span class="logo-text-wrap">
+            <span class="logo-text">Absolut 360</span>
+            <span class="logo-tagline">Agencia de publicidad</span>
+          </span>
+        </a>
+      </div>
+      <nav class="main-nav" id="mainNav">
+        <a href="app.html" class="active">Inicio</a>
+        <a href="catalogo.html">Categorías</a>
+        <a href="ofertas.html">Ofertas</a>
+        <a href="contacto.html">Contacto</a>
+        <a href="reclamaciones.html" class="nav-link-muted">Reclamaciones</a>
+      </nav>
+      <div class="header-actions">
+        <div class="header-actions-icons">
+          <button class="theme-toggle" id="themeToggle" title="Cambiar tema" aria-label="Cambiar tema">🌙</button>
+          <button class="header-fav-btn" id="headerFavBtn" type="button" title="Favoritos" aria-label="Favoritos" onclick="openFavoritesFromHeader()">
+            ❤️ <span class="fav-count" id="headerFavCount">0</span>
+          </button>
+          <button class="cart-btn" id="cartBtn" type="button" aria-label="Carrito">
+            🛒 <span class="cart-count" id="cartCount">0</span>
+          </button>
+        </div>
+        <div id="authArea" class="auth-area"></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Premium Hero (ClearView-inspired) -->
+  <section class="cv-hero">
+    <div class="cv-hero-inner">
+      <div class="cv-hero-copy">
+        <p class="cv-kicker">AGENCIA · NFC · MERCHANDISING</p>
+        <h1>Productos premium para potenciar tu marca</h1>
+        <p class="cv-lead">Tarjetas NFC, merchandising corporativo y soluciones publicitarias con la calidad Absolut 360. Precios en soles y dólares.</p>
+        <div class="cv-hero-cta">
+          <a href="#productsGrid" class="cv-btn-primary">Ver productos</a>
+          <a href="catalogo.html" class="cv-btn-outline">Explorar categorías</a>
+        </div>
+      </div>
+      <div class="cv-hero-visual">
+        <div class="cv-hero-card">
+          <img src="images/logo-absolut360.png" alt="Absolut 360" class="cv-hero-logo">
+          <p>Absolut 360</p>
+          <span>Agencia de publicidad</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="cv-trust-bar">
+    <div class="cv-trust-item"><span class="cv-trust-icon">🛡️</span><div><strong>Calidad premium</strong><small>Productos verificados</small></div></div>
+    <div class="cv-trust-item"><span class="cv-trust-icon">💰</span><div><strong>Mejores precios</strong><small>S/ y USD</small></div></div>
+    <div class="cv-trust-item"><span class="cv-trust-icon">🔄</span><div><strong>Devolución 30 días</strong><small>Sin complicaciones</small></div></div>
+    <div class="cv-trust-item"><span class="cv-trust-icon">💬</span><div><strong>Soporte 24/7</strong><small>Chat y WhatsApp</small></div></div>
+  </div>
+
+  <div class="store-container" id="storeStart">
+    <aside class="sidebar">
+      <div class="filter-section">
+        <h3>📂 Categorías</h3>
+        <ul class="filter-list" id="sidebarCatList">
+          <li><label><input type="checkbox" name="cat" value="productos nfc"> Productos NFC</label></li>
+          <li><label><input type="checkbox" name="cat" value="tecnología nfc"> Tecnología NFC</label></li>
+          <li><label><input type="checkbox" name="cat" value="cuadernos"> Cuadernos</label></li>
+          <li><label><input type="checkbox" name="cat" value="lanyards"> Lanyards</label></li>
+          <li><label><input type="checkbox" name="cat" value="tomatodos"> Tomatodos</label></li>
+          <li><label><input type="checkbox" name="cat" value="tazas"> Tazas</label></li>
+          <li><label><input type="checkbox" name="cat" value="lapiceros"> Lapiceros</label></li>
+        </ul>
+      </div>
+      <div class="filter-section">
+        <h3>💰 Rango de Precio</h3>
+        <div class="price-inputs">
+          <input type="number" id="minPrice" placeholder="Mín">
+          <span>-</span>
+          <input type="number" id="maxPrice" placeholder="Máx">
+        </div>
+      </div>
+      <div class="filter-section">
+        <h3>⭐ Valoración</h3>
+        <ul class="filter-list">
+          <li><label><input type="checkbox" name="rating" value="4"> ⭐⭐⭐⭐ o más</label></li>
+          <li><label><input type="checkbox" name="rating" value="3"> ⭐⭐⭐ o más</label></li>
+        </ul>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <div class="category-chips-wrap" id="categoryChips"></div>
+      <div class="abs-toolbar" id="absToolbar">
+        <div class="abs-search-row">
+          <input type="text" id="absSearchInput" placeholder="Nombre, SKU, NFC...">
+          <input type="number" id="absPriceMin" placeholder="S/ desde" min="0" step="0.01">
+          <input type="number" id="absPriceMax" placeholder="S/ hasta" min="0" step="0.01">
+          <select id="absSort"><option value="">Destacados</option><option value="price-asc">Precio ↑</option><option value="price-desc">Precio ↓</option><option value="rating">Mejor valorados</option></select>
+          <button type="button" class="abs-filter-btn" id="absFilterBtn">FILTRAR / BUSCAR</button>
+          <button type="button" class="abs-clear-btn" id="absClearBtn">LIMPIAR</button>
+        </div>
+      </div>
+      <div class="products-header">
+        <div>
+          <h1>✨ Productos Destacados</h1>
+          <p class="currency-note">Precios en <strong>soles (S/)</strong> y <strong>dólares (USD)</strong> · Tipo de cambio ref. S/ 3.75</p>
+        </div>
+        <select id="sortSelect">
+          <option value="">Ordenar por</option>
+          <option value="price-asc">Precio: menor a mayor</option>
+          <option value="price-desc">Precio: mayor a menor</option>
+          <option value="rating">Mejor valorados</option>
+        </select>
+      </div>
+      
+      <section class="home-testimonials" id="homeTestimonialsSection" style="margin:28px 0 8px">
+        <div class="products-header" style="margin-bottom:16px">
+          <div>
+            <h2 style="margin:0;font-size:22px">⭐ Lo que dicen nuestros clientes</h2>
+            <p style="margin:4px 0 0;color:var(--color-text-secondary);font-size:14px">Opiniones reales de la tienda</p>
+          </div>
+        </div>
+        <div class="testimonials-grid" id="homeTestimonials"></div>
+      </section>
+<div class="products-grid" id="productsGrid"></div>
+    </main>
+  </div>
+
+  <!-- Modal Detalle Producto -->
+  <div class="modal-overlay" id="productDetailModal">
+    <div class="modal modal-product-detail">
+      <button class="modal-close" data-close>&times;</button>
+      <div class="product-detail-content">
+        <div class="product-gallery">
+          <img id="detailImage" src="" alt="">
+          <button class="btn-favorite-float" id="detailFavoriteBtn">
+            <span class="heart-icon">🤍</span>
+          </button>
+          <div class="gallery-badges">
+            <span class="badge-sku" id="detailSku">SKU-001</span>
+          </div>
+        </div>
+        <div class="product-detail-info">
+          <span class="category-badge" id="detailCategory">ELECTRÓNICA</span>
+          <h2 id="detailName">Nombre del Producto</h2>
+          <div class="rating-detail">
+            <span class="stars-detail" id="detailStars">★★★★☆</span>
+            <span class="rating-text" id="detailReviews">4.5 (128 reseñas)</span>
+          </div>
+          <div class="price-detail">
+            <span class="price-main" id="detailPrice">$59.99</span>
+            <span class="price-old" id="detailOldPrice">$89.99</span>
+            <span class="discount-badge" id="detailDiscount">-33%</span>
+          </div>
+          <div id="detailStock" class="stock-status-badge"></div>
+
+          <div class="product-tabs">
+            <div class="tabs-header">
+              <button class="tab-button active" data-tab="description" onclick="switchTab('description')">
+                <span class="tab-icon">📝</span> Descripción
+              </button>
+              <button class="tab-button" data-tab="features" onclick="switchTab('features')">
+                <span class="tab-icon">✨</span> Características
+              </button>
+              <button class="tab-button" data-tab="related" onclick="switchTab('related')">
+                <span class="tab-icon">🔗</span> Relacionados
+              </button>
+            </div>
+            <div class="tabs-content">
+              <div class="tab-content active" id="tab-description">
+                <p id="detailDescription"></p>
+              </div>
+              <div class="tab-content" id="tab-features">
+                <ul class="features-list" id="detailFeatures"></ul>
+              </div>
+              <div class="tab-content" id="tab-related">
+                <div class="related-grid" id="relatedProducts"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="quantity-selector">
+            <label>Cantidad:</label>
+            <div class="qty-controls">
+              <button id="qtyMinus">−</button>
+              <input type="number" id="qtyInput" value="1" min="1" readonly>
+              <button id="qtyPlus">+</button>
+            </div>
+          </div>
+          <div class="actions-detail">
+            <button class="btn-large btn-primary" id="detailAddToCart">🛒 Agregar al Carrito</button>
+          </div>
+          <div class="product-meta">
+            <div class="meta-item">📦 Envío gratis en compras mayores a $50</div>
+            <div class="meta-item">🔄 Devolución gratuita en 30 días</div>
+            <div class="meta-item">🛡️ Garantía de 1 año</div>
+            <div class="meta-item">💳 Pago seguro</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Panel Admin -->
+  <div class="modal-overlay" id="adminPanel">
+    <div class="modal modal-admin">
+      <div class="admin-header">
+        <div>
+          <h2>📊 Panel de Administración</h2>
+          <p style="color: var(--color-text-secondary); margin-top: 4px;">Gestiona productos, stocks e imágenes</p>
+        </div>
+        <div class="admin-actions">
+          <button class="btn-primary" id="addProductBtn">➕ Nuevo</button>
+          <button class="btn-secondary" onclick="exportProducts()">📥 Exportar</button>
+          <button class="btn-secondary" onclick="importProducts()">📤 Importar</button>
+          <button class="btn-ghost" onclick="resetProducts()">🔄 Reset</button>
+          <button class="btn-ghost" id="logoutBtn">🚪 Salir</button>
+          <button class="modal-close" data-close>&times;</button>
+        </div>
+      </div>
+
+      <div id="adminAlerts" class="admin-alerts"></div>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon">📦</div>
+          <div class="stat-info">
+            <div class="stat-value" id="statTotal">0</div>
+            <div class="stat-label">Total Productos</div>
+          </div>
+        </div>
+        <div class="stat-card stat-success">
+          <div class="stat-icon">✅</div>
+          <div class="stat-info">
+            <div class="stat-value" id="statInStock">0</div>
+            <div class="stat-label">En Stock</div>
+          </div>
+        </div>
+        <div class="stat-card stat-danger">
+          <div class="stat-icon">⚠️</div>
+          <div class="stat-info">
+            <div class="stat-value" id="statOutOfStock">0</div>
+            <div class="stat-label">Agotados</div>
+          </div>
+        </div>
+        <div class="stat-card stat-warning">
+          <div class="stat-icon">⚡</div>
+          <div class="stat-info">
+            <div class="stat-value" id="statLowStock">0</div>
+            <div class="stat-label">Stock Bajo (≤5)</div>
+          </div>
+        </div>
+        <div class="stat-card stat-info">
+          <div class="stat-icon">💰</div>
+          <div class="stat-info">
+            <div class="stat-value" id="statValue">$0</div>
+            <div class="stat-label">Valor Inventario</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">🔥</div>
+          <div class="stat-info">
+            <div class="stat-value" id="statOffers">0</div>
+            <div class="stat-label">En Oferta</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">⭐</div>
+          <div class="stat-info">
+            <div class="stat-value" id="statAvgRating">0</div>
+            <div class="stat-label">Rating Promedio</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">📊</div>
+          <div class="stat-info">
+            <div class="stat-value" id="statTotalUnits">0</div>
+            <div class="stat-label">Unidades Totales</div>
+          </div>
+        </div>
+        <div class="stat-card stat-success">
+          <div class="stat-icon">🧾</div>
+          <div class="stat-info">
+            <div class="stat-value" id="statOrders">0</div>
+            <div class="stat-label">Pedidos</div>
+          </div>
+        </div>
+        <div class="stat-card stat-info">
+          <div class="stat-icon">💵</div>
+          <div class="stat-info">
+            <div class="stat-value" id="statRevenue">$0</div>
+            <div class="stat-label">Ingresos</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">👥</div>
+          <div class="stat-info">
+            <div class="stat-value" id="statUsers">0</div>
+            <div class="stat-label">Clientes</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chart-section">
+        <h3>Productos por Categoría</h3>
+        <div class="chart-container" id="categoryChart"></div>
+      </div>
+
+      <div class="admin-toolbar">
+        <input type="text" id="adminSearch" placeholder="🔍 Buscar por nombre o SKU..." class="admin-search">
+        <select id="adminFilterCategory" class="admin-select">
+          <option value="">Todas las categorías</option>
+          <option value="Productos NFC">Productos NFC</option>
+          <option value="Tecnología NFC">Tecnología NFC</option>
+          <option value="Cuadernos">Cuadernos</option>
+          <option value="Productos Publicitarios">Productos Publicitarios</option>
+        </select>
+        <select id="adminFilterStock" class="admin-select">
+          <option value="">Todos los estados</option>
+          <option value="in">En stock</option>
+          <option value="out">Agotados</option>
+          <option value="low">Stock bajo</option>
+          <option value="offer">En oferta</option>
+        </select>
+      </div>
+
+      <div class="table-container">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Producto</th>
+              <th>Categoría</th>
+              <th>Precio</th>
+              <th>Stock</th>
+              <th>Rating</th>
+              <th>Estado</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="adminTableBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Agregar/Editar Producto -->
+  <div class="modal-overlay" id="productModal">
+    <div class="modal modal-form">
+      <button class="modal-close" data-close>&times;</button>
+      <h2 id="productModalTitle" style="margin-bottom: 20px;">Agregar Producto</h2>
+      <form id="productForm">
+        <input type="hidden" id="productId">
+        <div class="form-group full-width">
+          <label>📷 Imágenes del producto (IA organiza)</label>
+          <div class="upload-preview" id="uploadPreview">
+            <img id="imagePreview" src="" alt="Vista previa" style="display: none;">
+            <span id="previewPlaceholder" style="color: var(--color-text-secondary);">Imagen principal · sube una o varias</span>
+          </div>
+          <label for="imageInput" class="btn-secondary btn-block" style="display: block; text-align: center; cursor: pointer; margin-top: 8px;">
+            📤 Subir imágenes (máx 2MB c/u · hasta 6)
+          </label>
+          <input type="file" id="imageInput" accept="image/*" multiple style="display: none;">
+          <div class="image-gallery-grid" id="imageGalleryGrid"></div>
+          <div id="imageAiInsights" class="image-ai-insights"></div>
+        </div>
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Nombre *</label>
+            <input type="text" id="pName" required placeholder="Nombre del producto">
+          </div>
+          <div class="form-group">
+            <label>SKU</label>
+            <input type="text" id="pSku" placeholder="Código único">
+          </div>
+          <div class="form-group">
+            <label>Categoría *</label>
+            <select id="pCategory" required>
+              <option value="Productos NFC">Productos NFC</option>
+              <option value="Tecnología NFC">Tecnología NFC</option>
+              <option value="Cuadernos">Cuadernos</option>
+              <option value="Productos Publicitarios">Productos Publicitarios</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Stock *</label>
+            <input type="number" id="pStock" min="0" required placeholder="0">
+          </div>
+          <div class="form-group">
+            <label>Precio ($) *</label>
+            <input type="number" id="pPrice" step="0.01" min="0" required placeholder="0.00">
+          </div>
+          <div class="form-group">
+            <label>Precio Anterior ($)</label>
+            <input type="number" id="pOldPrice" step="0.01" min="0" placeholder="Opcional">
+          </div>
+          <div class="form-group">
+            <label>Valoración (0-5)</label>
+            <input type="number" id="pRating" step="0.1" min="0" max="5" value="4.0">
+          </div>
+          <div class="form-group">
+            <label>Nº de Reseñas</label>
+            <input type="number" id="pReviews" min="0" value="0">
+          </div>
+        </div>
+        <div class="form-group full-width">
+          <label>Descripción</label>
+          <textarea id="pDescription" rows="3" placeholder="Descripción detallada del producto..."></textarea>
+        </div>
+        <div class="form-group full-width">
+          <label>Características (separadas por comas)</label>
+          <textarea id="pFeatures" rows="2" placeholder="Ej: Bluetooth 5.0, 30h batería, Resistente al agua"></textarea>
+        </div>
+        <div class="form-row">
+          <label class="switch-label">
+            <input type="checkbox" id="pOffer"> 🔥 Marcar como oferta
+          </label>
+          <label class="switch-label">
+            <input type="checkbox" id="pInStock" checked> ✅ Disponible
+          </label>
+          <label class="switch-label">
+            <input type="checkbox" id="pIsNew"> ✨ Producto nuevo
+          </label>
+        </div>
+        <div class="form-actions">
+          <button type="button" class="btn-secondary" data-close>Cancelar</button>
+          <button type="submit" class="btn-primary">💾 Guardar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal Auth (Login / Registro) -->
+  <div class="modal-overlay" id="authModal">
+    <div class="modal modal-auth login-card">
+      <button class="modal-close" data-close>&times;</button>
+      <div class="login-card-brand">
+        <span class="login-card-icon">🛒</span>
+        <strong>Absolut 360</strong>
+        <small>Accede a tu cuenta</small>
+      </div>
+      <div class="auth-tabs">
+        <button class="auth-tab active" data-tab="login">Iniciar sesión</button>
+        <button class="auth-tab" data-tab="register">Registrarse</button>
+      </div>
+      <div id="loginFormBox">
+        <form id="loginForm">
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" id="loginEmail" required placeholder="tu@email.com">
+          </div>
+          <div class="form-group">
+            <label>Contraseña</label>
+            <input type="password" id="loginPassword" required placeholder="••••••••">
+          </div>
+          <button type="submit" class="btn-primary btn-block">Entrar</button>
+        </form>
+        <div class="auth-demo">
+          <p><strong>Demo Admin:</strong> admin@tutienda.com / admin123</p>
+          <p><strong>Demo Cliente:</strong> cliente@demo.com / cliente123</p>
+        </div>
+      </div>
+      <div id="registerFormBox" style="display:none">
+        <form id="registerForm">
+          <div class="form-group">
+            <label>Nombre completo *</label>
+            <input type="text" id="regName" required placeholder="Tu nombre" maxlength="80" autocomplete="name">
+          </div>
+          <div class="form-group">
+            <label>Email *</label>
+            <input type="email" id="regEmail" required placeholder="tu@email.com" autocomplete="email">
+          </div>
+          <div class="form-group">
+            <label>Teléfono *</label>
+            <div class="phone-row">
+              <span class="phone-flag" title="Perú">🇵🇪 +51</span>
+              <input type="tel" id="regPhone" required placeholder="999 999 999" pattern="[0-9\s]{7,15}" autocomplete="tel" inputmode="tel">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Fecha de nacimiento</label>
+            <div class="dob-row">
+              <input type="text" id="regDobD" placeholder="DD" maxlength="2" inputmode="numeric" aria-label="Día">
+              <input type="text" id="regDobM" placeholder="MM" maxlength="2" inputmode="numeric" aria-label="Mes">
+              <input type="text" id="regDobY" placeholder="AAAA" maxlength="4" inputmode="numeric" aria-label="Año">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Contraseña (mín. 6) *</label>
+            <input type="password" id="regPassword" required minlength="6" placeholder="••••••••" autocomplete="new-password">
+          </div>
+          <label class="check-row">
+            <input type="checkbox" id="regTerms" required>
+            <span>He leído y acepto los <a href="#" onclick="event.preventDefault();showToast('Términos de uso Absolut 360 (demo)')">Términos y Condiciones</a> y la <a href="#" onclick="event.preventDefault();showToast('Política de privacidad (demo)')">Política de Privacidad</a></span>
+          </label>
+          <label class="check-row">
+            <input type="checkbox" id="regNewsletter">
+            <span>Quiero recibir actualizaciones de Absolut 360</span>
+          </label>
+          <button type="submit" class="btn-primary btn-block">Registrarse</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dashboard Cliente -->
+  <div class="modal-overlay" id="clientDashboard">
+    <div class="modal modal-client-dash">
+      <div class="cd-header">
+        <div>
+          <h2>👤 Mi Dashboard</h2>
+          <div id="clientDashStats" class="cd-stats-row"></div>
+        </div>
+        <button class="modal-close" data-close>&times;</button>
+      </div>
+      <div class="cd-tabs">
+        <button class="cd-tab active" data-tab="overview" onclick="switchClientTab('overview')">Resumen</button>
+        <button class="cd-tab" data-tab="loyalty" onclick="switchClientTab('loyalty')">📱 Tarjeta</button>
+        <button class="cd-tab" data-tab="orders" onclick="switchClientTab('orders')">Pedidos</button>
+        <button class="cd-tab" data-tab="favorites" onclick="switchClientTab('favorites')">Favoritos</button>
+        <button class="cd-tab" data-tab="profile" onclick="switchClientTab('profile')">Perfil</button>
+      </div>
+      <div id="clientDashBody" class="cd-body"></div>
+    </div>
+  </div>
+
+  <!-- Modal Carrito -->
+  <div class="modal-overlay" id="cartModal">
+    <div class="modal modal-cart">
+      <button class="modal-close" data-close>&times;</button>
+      <h2 style="margin-bottom: 20px;">🛒 Tu Carrito</h2>
+      <div id="cartItems"></div>
+      <div class="cart-total">Total: $<span id="cartTotal">0.00</span></div>
+      <button class="btn-primary btn-block" id="checkoutBtn" style="margin-top: 16px;">💳 Pagar · Yape / Plin / Tarjeta</button>
+    </div>
+  </div>
+
+  <!-- Carrito Flotante -->
+  <button class="cart-floating" id="cartFloating">
+    🛒
+    <span class="cart-count" id="cartCount">0</span>
+  </button>
+
+  <!-- Chat Widget -->
+  <div class="chat-widget">
+    <button class="chat-toggle" id="chatToggle">💬</button>
+    <div class="chat-box" id="chatBox">
+      <div class="chat-header">
+        <div class="chat-avatar">🤖</div>
+        <div class="chat-header-info"><h4>Asistente IA Absolut 360</h4><p>En línea</p></div>
+      </div>
+      <div class="chat-messages" id="chatMessages"></div>
+      <div class="chat-input">
+        <input type="text" id="chatInput" placeholder="Productos, ofertas o mejorar imagen...">
+        <button id="chatSend">➤</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+    <footer class="site-footer pro-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="images/logo-absolut360.png" alt="Absolut 360" class="footer-logo">
+        <div>
+          <strong>Absolut 360</strong>
+          <span>Agencia de publicidad · NFC & merchandising</span>
+        </div>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h4>Tienda</h4>
+          <a href="app.html">Inicio</a>
+          <a href="catalogo.html">Catálogo</a>
+          <a href="ofertas.html">Ofertas</a>
+        </div>
+        <div class="footer-col">
+          <h4>Soporte</h4>
+          <a href="contacto.html">Contacto</a>
+          <a href="reclamaciones.html">Libro de reclamaciones</a>
+          <a href="#" onclick="event.preventDefault();document.getElementById('chatToggle')?.click()">Chat en vivo</a>
+        </div>
+        <div class="footer-col">
+          <h4>Contacto</h4>
+          <p>✉️ comercial@absolut-360.com</p>
+          <p>💬 WhatsApp comercial</p>
+          <p>📍 Lima, Perú</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Absolut 360. Todos los derechos reservados.</span>
+      <span>Precios en S/ y USD · Tipo de cambio referencial</span>
+    </div>
+  </footer>
+
+  <script src="loyicard-client.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

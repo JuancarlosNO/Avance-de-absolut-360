@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#c9a227">
+  <title>Categorías | Absolut 360</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="live-ticker" id="promoTicker" role="marquee" aria-label="Promociones">
+    <div class="ticker-track">
+      <span class="ticker-item">🎟️ Cupón <strong>BIENVENIDO10</strong> → 10% dto.</span>
+      <span class="ticker-item">🔥 Ofertas del día</span>
+      <span class="ticker-item">🛡️ Garantía 1 año</span>
+      <span class="ticker-item">💬 Chat 24/7</span>
+      <span class="ticker-item">🚚 Envío gratis +S/50</span>
+      <span class="ticker-item">🎟️ Cupón <strong>BIENVENIDO10</strong> → 10% dto.</span>
+      <span class="ticker-item">🔥 Ofertas del día</span>
+      <span class="ticker-item">🛡️ Garantía 1 año</span>
+      <span class="ticker-item">💬 Chat 24/7</span>
+      <span class="ticker-item">🚚 Envío gratis +S/50</span>
+    </div>
+  </div>
+
+    <div class="nav-backdrop" id="navBackdrop" aria-hidden="true"></div>
+  <header class="site-header"><div class="header-inner">
+    <div class="header-left">
+      <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" type="button">
+        <span></span><span></span><span></span>
+      </button>
+      <a href="app.html" class="logo" aria-label="Absolut 360">
+        <img src="images/logo-absolut360.png" alt="Absolut 360" class="logo-img">
+        <span class="logo-text-wrap">
+          <span class="logo-text">Absolut 360</span>
+          <span class="logo-tagline">Agencia de publicidad</span>
+        </span>
+      </a>
+    </div>
+    <nav class="main-nav" id="mainNav">
+      <a href="app.html">Inicio</a>
+      <a href="catalogo.html" class="active">Categorías</a>
+      <a href="ofertas.html">Ofertas</a>
+      <a href="contacto.html">Contacto</a>
+      <a href="reclamaciones.html">Reclamaciones</a>
+    </nav>
+    <div class="header-actions">
+      <button class="theme-toggle" id="themeToggle" title="Cambiar tema" aria-label="Cambiar tema">🌙</button>
+      <button class="cart-btn" id="cartBtn" type="button" aria-label="Carrito">
+        🛒 <span class="cart-count" id="cartCount">0</span>
+      </button>
+      <div id="authArea" class="auth-area"></div>
+    </div>
+  </div></header>
+
+  <section class="hero-section">
+    <h1>📂 Nuestras Categorías</h1>
+    <p>Explora merchandising, NFC y productos publicitarios · Precios en <strong>S/</strong> y <strong>USD</strong></p>
+    <div class="hero-cta">
+      <a href="app.html" class="hero-btn hero-btn-primary">🏠 Ver todos los productos</a>
+    </div>
+  </section>
+
+  <main class="page-container">
+    <div class="categories-grid">
+      <div class="category-card" data-category="productos nfc">
+        <div class="category-icon">📡</div>
+        <h3>Productos NFC</h3>
+        <p>Ver productos</p>
+        <span class="category-count">0 productos</span>
+      </div>
+      <div class="category-card" data-category="tecnología nfc">
+        <div class="category-icon">💳</div>
+        <h3>Tecnología NFC</h3>
+        <p>Ver productos</p>
+        <span class="category-count">0 productos</span>
+      </div>
+      <div class="category-card" data-category="cuadernos">
+        <div class="category-icon">📓</div>
+        <h3>Cuadernos</h3>
+        <p>Ver productos</p>
+        <span class="category-count">0 productos</span>
+      </div>
+      <div class="category-card" data-category="cuadros publicitarios">
+        <div class="category-icon">🖼️</div>
+        <h3>Cuadros Publicitarios</h3>
+        <p>Ver productos</p>
+        <span class="category-count">0 productos</span>
+      </div>
+      <div class="category-card" data-category="lanyards">
+        <div class="category-icon">🏷️</div>
+        <h3>Lanyards</h3>
+        <p>Ver productos</p>
+        <span class="category-count">0 productos</span>
+      </div>
+      <div class="category-card" data-category="lapiceros">
+        <div class="category-icon">✒️</div>
+        <h3>Lapiceros</h3>
+        <p>Ver productos</p>
+        <span class="category-count">0 productos</span>
+      </div>
+      <div class="category-card" data-category="tazas">
+        <div class="category-icon">☕</div>
+        <h3>Tazas</h3>
+        <p>Ver productos</p>
+        <span class="category-count">0 productos</span>
+      </div>
+      <div class="category-card" data-category="tomatodos">
+        <div class="category-icon">🍼</div>
+        <h3>Tomatodos</h3>
+        <p>Ver productos</p>
+        <span class="category-count">0 productos</span>
+      </div>
+      <div class="category-card" data-category="calendarios">
+        <div class="category-icon">📅</div>
+        <h3>Calendarios</h3>
+        <p>Ver productos</p>
+        <span class="category-count">0 productos</span>
+      </div>
+      <div class="category-card" data-category="antiestrés">
+        <div class="category-icon">🧘</div>
+        <h3>Antiestrés</h3>
+        <p>Ver productos</p>
+        <span class="category-count">0 productos</span>
+      </div>
+      <div class="category-card" data-category="artículos de escritorio">
+        <div class="category-icon">🖇️</div>
+        <h3>Artículos de Escritorio</h3>
+        <p>Ver productos</p>
+        <span class="category-count">0 productos</span>
+      </div>
+      <div class="category-card" data-category="productos publicitarios">
+        <div class="category-icon">🎁</div>
+        <h3>Productos Publicitarios</h3>
+        <p>Ver productos</p>
+        <span class="category-count">0 productos</span>
+      </div>
+    </div>
+  </main>
+
+  <!-- Modal Detalle -->
+  <div class="modal-overlay" id="productDetailModal">
+    <div class="modal modal-product-detail">
+      <button class="modal-close" data-close>&times;</button>
+      <div class="product-detail-content">
+        <div class="product-gallery">
+          <img id="detailImage" src="" alt="">
+          <button class="btn-favorite-float" id="detailFavoriteBtn"><span class="heart-icon">🤍</span></button>
+          <div class="gallery-badges"><span class="badge-sku" id="detailSku"></span></div>
+        </div>
+        <div class="product-detail-info">
+          <span class="category-badge" id="detailCategory"></span>
+          <h2 id="detailName"></h2>
+          <div class="rating-detail">
+            <span class="stars-detail" id="detailStars"></span>
+            <span class="rating-text" id="detailReviews"></span>
+          </div>
+          <div class="price-detail">
+            <span class="price-main" id="detailPrice"></span>
+            <span class="price-old" id="detailOldPrice"></span>
+            <span class="discount-badge" id="detailDiscount"></span>
+          </div>
+          <div id="detailStock" class="stock-status-badge"></div>
+          <div class="product-tabs">
+            <div class="tabs-header">
+              <button class="tab-button active" data-tab="description" onclick="switchTab('description')"><span class="tab-icon">📝</span> Descripción</button>
+              <button class="tab-button" data-tab="features" onclick="switchTab('features')"><span class="tab-icon">✨</span> Características</button>
+              <button class="tab-button" data-tab="related" onclick="switchTab('related')"><span class="tab-icon">🔗</span> Relacionados</button>
+            </div>
+            <div class="tabs-content">
+              <div class="tab-content active" id="tab-description"><p id="detailDescription"></p></div>
+              <div class="tab-content" id="tab-features"><ul class="features-list" id="detailFeatures"></ul></div>
+              <div class="tab-content" id="tab-related"><div class="related-grid" id="relatedProducts"></div></div>
+            </div>
+          </div>
+          <div class="quantity-selector">
+            <label>Cantidad:</label>
+            <div class="qty-controls">
+              <button id="qtyMinus">−</button>
+              <input type="number" id="qtyInput" value="1" min="1" readonly>
+              <button id="qtyPlus">+</button>
+            </div>
+          </div>
+          <div class="actions-detail">
+            <button class="btn-large btn-primary" id="detailAddToCart">🛒 Agregar al Carrito</button>
+          </div>
+          <div class="product-meta">
+            <div class="meta-item">📦 Envío gratis en compras mayores a $50</div>
+            <div class="meta-item">🔄 Devolución gratuita en 30 días</div>
+            <div class="meta-item">🛡️ Garantía de 1 año</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+  <!-- Modal Auth -->
+  <div class="modal-overlay" id="authModal">
+    <div class="modal modal-auth login-card">
+      <button class="modal-close" data-close>&times;</button>
+      <div class="login-card-brand">
+        <span class="login-card-icon">🛒</span>
+        <strong>Absolut 360</strong>
+        <small>Accede a tu cuenta</small>
+      </div>
+      <div class="auth-tabs">
+        <button class="auth-tab active" data-tab="login">Iniciar sesión</button>
+        <button class="auth-tab" data-tab="register">Registrarse</button>
+      </div>
+      <div id="loginFormBox">
+        <form id="loginForm">
+          <div class="form-group"><label>Email</label><input type="email" id="loginEmail" required placeholder="tu@email.com"></div>
+          <div class="form-group"><label>Contraseña</label><input type="password" id="loginPassword" required placeholder="••••••••"></div>
+          <button type="submit" class="btn-primary btn-block">Entrar</button>
+        </form>
+        <div class="auth-demo">
+          <p><strong>Demo Admin:</strong> admin@tutienda.com / admin123</p>
+          <p><strong>Demo Cliente:</strong> cliente@demo.com / cliente123</p>
+        </div>
+      </div>
+      <div id="registerFormBox" style="display:none">
+        <form id="registerForm">
+          <div class="form-group"><label>Nombre</label><input type="text" id="regName" required></div>
+          <div class="form-group"><label>Email</label><input type="email" id="regEmail" required></div>
+          <div class="form-group"><label>Contraseña</label><input type="password" id="regPassword" required minlength="6"></div>
+          <button type="submit" class="btn-primary btn-block">Crear cuenta</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dashboard Cliente -->
+  <div class="modal-overlay" id="clientDashboard">
+    <div class="modal modal-client-dash">
+      <div class="cd-header">
+        <div>
+          <h2>👤 Mi Dashboard</h2>
+          <div id="clientDashStats" class="cd-stats-row"></div>
+        </div>
+        <button class="modal-close" data-close>&times;</button>
+      </div>
+      <div class="cd-tabs">
+        <button class="cd-tab active" data-tab="overview" onclick="switchClientTab('overview')">Resumen</button>
+        <button class="cd-tab" data-tab="loyalty" onclick="switchClientTab('loyalty')">📱 Tarjeta</button>
+        <button class="cd-tab" data-tab="orders" onclick="switchClientTab('orders')">Pedidos</button>
+        <button class="cd-tab" data-tab="favorites" onclick="switchClientTab('favorites')">Favoritos</button>
+        <button class="cd-tab" data-tab="profile" onclick="switchClientTab('profile')">Perfil</button>
+      </div>
+      <div id="clientDashBody" class="cd-body"></div>
+    </div>
+  </div>
+
+  <!-- Modal Carrito -->
+  <div class="modal-overlay" id="cartModal">
+    <div class="modal modal-cart">
+      <button class="modal-close" data-close>&times;</button>
+      <h2>🛒 Tu Carrito</h2>
+      <div id="cartItems"></div>
+      <div class="cart-total">Total: $<span id="cartTotal">0.00</span></div>
+      <button class="btn-primary btn-block" id="checkoutBtn">💳 Pagar · Yape / Plin / Tarjeta</button>
+    </div>
+  </div>
+
+  <button class="cart-floating" id="cartFloating">🛒<span class="cart-count" id="cartCountFloat">0</span></button>
+
+  <!-- Chat Widget -->
+  <div class="chat-widget">
+    <button class="chat-toggle" id="chatToggle">💬</button>
+    <div class="chat-box" id="chatBox">
+      <div class="chat-header">
+        <div class="chat-avatar">🤖</div>
+        <div class="chat-header-info"><h4>Asistente IA Absolut 360</h4><p>En línea</p></div>
+      </div>
+      <div class="chat-messages" id="chatMessages"></div>
+      <div class="chat-input">
+        <input type="text" id="chatInput" placeholder="Productos, ofertas o mejorar imagen...">
+        <button id="chatSend">➤</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <footer class="site-footer">
+    <p>© 2026 Absolut 360. Todos los derechos reservados.</p>
+  </footer>
+
+  <script src="loyicard-client.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

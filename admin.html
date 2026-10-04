@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#667eea">
+  <title>Panel Admin | Absolut 360</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body class="admin-body">
+  <div class="admin-layout">
+    <!-- Sidebar -->
+    <aside class="admin-sidebar" id="adminSidebar">
+      <div class="sidebar-brand">
+        <div class="brand-logo-wrap">
+          <img src="images/logo-absolut360.png" alt="Absolut 360" class="admin-logo-img">
+        </div>
+        <div class="brand-text">
+          <strong>Absolut 360</strong>
+          <small>Panel de control</small>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-group-label">Principal</div>
+        <button class="nav-item active" data-section="dashboard" onclick="switchAdminSection('dashboard')">
+          <span class="nav-icon">📊</span> <span class="nav-label">Dashboard</span>
+        </button>
+        <div class="nav-group-label">Tienda</div>
+        <button class="nav-item" data-section="products" onclick="switchAdminSection('products')">
+          <span class="nav-icon">📦</span> <span class="nav-label">Productos</span> <span class="nav-badge" id="badgeProducts"></span>
+        </button>
+        <button class="nav-item" data-section="orders" onclick="switchAdminSection('orders')">
+          <span class="nav-icon">🧾</span> <span class="nav-label">Pedidos</span> <span class="nav-badge" id="badgeOrders"></span>
+        </button>
+        <button class="nav-item" data-section="quotes" onclick="switchAdminSection('quotes')">
+          <span class="nav-icon">📋</span> <span class="nav-label">Cotizaciones</span> <span class="nav-badge" id="badgeQuotes"></span>
+        </button>
+        <button class="nav-item" data-section="clients" onclick="switchAdminSection('clients')">
+          <span class="nav-icon">👥</span> <span class="nav-label">Clientes</span> <span class="nav-badge" id="badgeClients"></span>
+        </button>
+        <div class="nav-group-label">Gestión</div>
+        <button class="nav-item" data-section="finance" onclick="switchAdminSection('finance')">
+          <span class="nav-icon">💰</span> <span class="nav-label">Finanzas</span>
+        </button>
+        <button class="nav-item" data-section="receipts" onclick="switchAdminSection('receipts')">
+          <span class="nav-icon">🧾</span> <span class="nav-label">Comprobantes</span>
+        </button>
+        <button class="nav-item" data-section="team" onclick="switchAdminSection('team')">
+          <span class="nav-icon">👔</span> <span class="nav-label">Equipo</span>
+        </button>
+        <button class="nav-item" data-section="emails" onclick="switchAdminSection('emails')">
+          <span class="nav-icon">📧</span> <span class="nav-label">Correos</span> <span class="nav-badge" id="badgeEmails"></span>
+        </button>
+        <button class="nav-item" data-section="backup" onclick="switchAdminSection('backup')">
+          <span class="nav-icon">💾</span> <span class="nav-label">Respaldo</span>
+        </button>
+        <div class="nav-group-label">Análisis</div>
+        <button class="nav-item" data-section="insights" onclick="switchAdminSection('insights')">
+          <span class="nav-icon">✨</span> <span class="nav-label">Insights IA</span>
+        </button>
+        <div class="nav-group-label">Cuenta</div>
+        <button class="nav-item" data-section="profile" onclick="switchAdminSection('profile')">
+          <span class="nav-icon">👤</span> <span class="nav-label">Mi Perfil</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <a class="nav-item nav-link-store" href="app.html" title="Abrir tienda">
+          <span class="nav-icon">🛍️</span> <span class="nav-label">Ver tienda</span>
+        </a>
+        <button class="nav-item logout" onclick="adminLogout()">
+          <span class="nav-icon">🚪</span> <span class="nav-label">Cerrar sesión</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main -->
+    <div class="admin-main">
+      <header class="admin-topbar">
+        <div class="topbar-left">
+          <button class="sidebar-toggle" id="sidebarToggle" title="Menú">☰</button>
+          <div>
+            <h1 id="adminSectionTitle">Dashboard</h1>
+            <p class="topbar-subtitle" id="adminSectionSub">Resumen general de tu tienda</p>
+          </div>
+        </div>
+        <div class="topbar-right">
+          <button class="theme-toggle" id="themeToggle" title="Cambiar tema">🌙</button>
+          <div class="admin-user-chip" id="adminUserChip">
+            <span class="user-avatar">A</span>
+            <div>
+              <strong id="adminUserName">Admin</strong>
+              <small>Administrador</small>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div class="admin-content">
+        <!-- DASHBOARD -->
+        <section class="admin-section active" id="section-dashboard">
+          <div id="adminAlerts" class="admin-alerts"></div>
+
+          
+          <div class="admin-page-head">
+            <div>
+              <p class="admin-eyebrow">Resumen</p>
+              <h2 class="admin-page-title">Vista general</h2>
+            </div>
+          </div>
+
+          <p class="admin-group-label">Indicadores clave</p>
+          <div class="stats-grid admin-stats stats-primary">
+            <div class="stat-card glass stat-info">
+              <div class="stat-icon">🧾</div>
+              <div class="stat-info">
+                <div class="stat-value" id="statOrders">0</div>
+                <div class="stat-label">Pedidos</div>
+              </div>
+            </div>
+            <div class="stat-card glass stat-success">
+              <div class="stat-icon">💵</div>
+              <div class="stat-info">
+                <div class="stat-value" id="statRevenue">$0</div>
+                <div class="stat-label">Ingresos</div>
+              </div>
+            </div>
+            <div class="stat-card glass">
+              <div class="stat-icon">👥</div>
+              <div class="stat-info">
+                <div class="stat-value" id="statUsers">0</div>
+                <div class="stat-label">Clientes</div>
+              </div>
+            </div>
+            <div class="stat-card glass">
+              <div class="stat-icon">📦</div>
+              <div class="stat-info">
+                <div class="stat-value" id="statTotal">0</div>
+                <div class="stat-label">Productos</div>
+              </div>
+            </div>
+          </div>
+
+          <p class="admin-group-label">Inventario</p>
+          <div class="stats-grid admin-stats stats-secondary">
+            <div class="stat-card glass stat-success">
+              <div class="stat-icon">✅</div>
+              <div class="stat-info">
+                <div class="stat-value" id="statInStock">0</div>
+                <div class="stat-label">En Stock</div>
+              </div>
+            </div>
+            <div class="stat-card glass stat-danger">
+              <div class="stat-icon">⚠️</div>
+              <div class="stat-info">
+                <div class="stat-value" id="statOutOfStock">0</div>
+                <div class="stat-label">Agotados</div>
+              </div>
+            </div>
+            <div class="stat-card glass stat-warning">
+              <div class="stat-icon">⚡</div>
+              <div class="stat-info">
+                <div class="stat-value" id="statLowStock">0</div>
+                <div class="stat-label">Stock Bajo</div>
+              </div>
+            </div>
+            <div class="stat-card glass">
+              <div class="stat-icon">💰</div>
+              <div class="stat-info">
+                <div class="stat-value" id="statValue">$0</div>
+                <div class="stat-label">Valor Inventario</div>
+              </div>
+            </div>
+            <div class="stat-card glass">
+              <div class="stat-icon">🔥</div>
+              <div class="stat-info">
+                <div class="stat-value" id="statOffers">0</div>
+                <div class="stat-label">En Oferta</div>
+              </div>
+            </div>
+            <div class="stat-card glass">
+              <div class="stat-icon">⭐</div>
+              <div class="stat-info">
+                <div class="stat-value" id="statAvgRating">0</div>
+                <div class="stat-label">Rating Medio</div>
+              </div>
+            </div>
+            <div class="stat-card glass">
+              <div class="stat-icon">📊</div>
+              <div class="stat-info">
+                <div class="stat-value" id="statTotalUnits">0</div>
+                <div class="stat-label">Unidades</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="dashboard-grid">
+            <div class="panel glass">
+              <h3>📈 Productos por Categoría</h3>
+              <div class="chart-container" id="categoryChart"></div>
+            </div>
+            <div class="panel glass">
+              <h3>🔔 Actividad Reciente</h3>
+              <div class="activity-feed" id="activityFeed"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- PRODUCTS -->
+        <section class="admin-section" id="section-products">
+          <div class="admin-page-head">
+            <div>
+              <p class="admin-eyebrow">Catálogo</p>
+              <h2 class="admin-page-title">Catálogo</h2>
+              <p class="admin-page-sub">Gestiona stock, precios y visibilidad</p>
+            </div>
+          </div>
+
+          <div class="section-toolbar">
+            <div class="toolbar-left">
+              <input type="text" id="adminSearch" placeholder="🔍 Buscar por nombre o SKU..." class="admin-search">
+              <select id="adminFilterCategory" class="admin-select">
+                <option value="">Todas las categorías</option>
+                <option value="Productos NFC">Productos NFC</option>
+                <option value="Tecnología NFC">Tecnología NFC</option>
+                <option value="Cuadernos">Cuadernos</option>
+                <option value="Lanyards">Lanyards</option>
+                <option value="Tomatodos">Tomatodos</option>
+                <option value="Tazas">Tazas</option>
+                <option value="Lapiceros">Lapiceros</option>
+                <option value="Productos Publicitarios">Productos Publicitarios</option>
+              </select>
+              <select id="adminFilterStock" class="admin-select">
+                <option value="">Todos los estados</option>
+                <option value="in">En stock</option>
+                <option value="out">Agotados</option>
+                <option value="low">Stock bajo</option>
+                <option value="offer">En oferta</option>
+              </select>
+            </div>
+            <div class="toolbar-right">
+              <button class="btn-primary" id="addProductBtn">➕ Nuevo</button>
+              <button class="btn-secondary" onclick="exportProducts()">📥 Exportar</button>
+              <button class="btn-secondary" onclick="importProducts()">📤 Importar</button>
+              <button class="btn-ghost" onclick="resetProducts()">🔄 Reset</button>
+            </div>
+          </div>
+
+          <div class="admin-table-meta">
+            <span id="adminProductCount">0 productos</span>
+          </div>
+          <div class="table-container glass">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Producto</th>
+                  <th>Categoría</th>
+                  <th>Precio</th>
+                  <th>Stock</th>
+                  <th>Rating</th>
+                  <th>Estado</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody id="adminTableBody"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- ORDERS -->
+        <section class="admin-section" id="section-orders">
+          <div class="admin-page-head">
+            <div>
+              <p class="admin-eyebrow">Pedidos</p>
+              <h2 class="admin-page-title">Pedidos</h2>
+              <p class="admin-page-sub">Estados de envío, cobro y seguimiento</p>
+            </div>
+          </div>
+
+          <div class="section-toolbar">
+            <div class="toolbar-left">
+              <input type="text" id="adminOrdersSearch" placeholder="🔍 Buscar pedido, cliente..." class="admin-search">
+              <select id="adminOrdersSort" class="admin-select">
+                <option value="recent">Más recientes</option>
+                <option value="oldest">Más antiguos</option>
+                <option value="unseen">Nuevos primero</option>
+                <option value="amount-desc">Mayor monto</option>
+                <option value="amount-asc">Menor monto</option>
+              </select>
+              <select id="adminOrdersStatus" class="admin-select">
+                <option value="all">Todos los estados</option>
+                <option value="pendiente">Pendiente</option>
+                <option value="pagado">Pagado</option>
+                <option value="preparando">Preparando</option>
+                <option value="enviado">Enviado</option>
+                <option value="entregado">Entregado</option>
+                <option value="cancelado">Cancelado</option>
+              </select>
+            </div>
+            <div class="toolbar-right">
+              <button type="button" class="btn-secondary btn-sm" id="adminMarkAllSeen">✓ Marcar todos vistos</button>
+              <button type="button" class="btn-secondary btn-sm" onclick="exportOrdersCSV()">📥 Exportar CSV</button>
+              <span class="admin-table-meta" id="adminOrdersCount">0 pedidos</span>
+            </div>
+          </div>
+          <div class="panel glass">
+            <div id="adminOrdersList" class="orders-list"></div>
+          </div>
+        </section>
+
+        <!-- QUOTES -->
+        <section class="admin-section" id="section-quotes">
+          <div class="admin-page-head">
+            <div>
+              <p class="admin-eyebrow">Cotizaciones</p>
+              <h2 class="admin-page-title">Cotizaciones</h2>
+              <p class="admin-page-sub">Formaliza montos y envía link de aceptación</p>
+            </div>
+          </div>
+
+          <div class="section-toolbar">
+            <div class="toolbar-left">
+              <span class="admin-table-meta">Solicitudes de cotización de la tienda</span>
+            </div>
+            <div class="toolbar-right">
+              <button type="button" class="btn-secondary btn-sm" onclick="adminMarkAllQuotesSeen()">✓ Marcar vistas</button>
+              <button type="button" class="btn-secondary btn-sm" onclick="exportQuotesCSV()">📥 Exportar CSV</button>
+              <span class="admin-table-meta" id="adminQuotesCount">0 cotizaciones</span>
+            </div>
+          </div>
+          <div class="panel glass">
+            <div id="adminQuotesList" class="orders-list"></div>
+          </div>
+        </section>
+
+        <!-- CLIENTS -->
+        <section class="admin-section" id="section-clients">
+          <div class="admin-page-head">
+            <div>
+              <p class="admin-eyebrow">Clientes</p>
+              <h2 class="admin-page-title">Clientes</h2>
+              <p class="admin-page-sub">Usuarios registrados y actividad</p>
+            </div>
+          </div>
+
+          <div class="section-toolbar">
+            <div class="toolbar-left">
+              <input type="text" id="adminClientsSearch" placeholder="🔍 Buscar por nombre o email..." class="admin-search">
+            </div>
+            <div class="toolbar-right">
+              <span class="admin-table-meta" id="adminClientsCount">0 clientes</span>
+            </div>
+          </div>
+          <div class="panel glass">
+            <div id="adminClientsList" class="clients-list"></div>
+          </div>
+        </section>
+
+
+        <!-- EMAILS (bandeja del sistema, como en el video) -->
+        <section class="admin-section" id="section-emails">
+          <div class="admin-page-head">
+            <div>
+              <p class="admin-eyebrow">Notificaciones</p>
+              <h2 class="admin-page-title">Correos del sistema</h2>
+              <p class="admin-page-sub">Avisos generados al aceptar cotizaciones y confirmar pedidos (demo del video)</p>
+            </div>
+          </div>
+          <div class="section-toolbar">
+            <div class="toolbar-left">
+              <span class="admin-table-meta" id="adminEmailsCount">0 correos</span>
+            </div>
+            <div class="toolbar-right">
+              <button type="button" class="btn-secondary btn-sm" onclick="adminMarkAllEmailsRead()">✓ Marcar leídos</button>
+              <button type="button" class="btn-ghost btn-sm" onclick="adminClearEmails()">Limpiar bandeja</button>
+            </div>
+          </div>
+          <div class="panel glass">
+            <div id="adminEmailsList" class="orders-list"></div>
+          </div>
+        </section>
+
+        <!-- INSIGHTS -->
+        <section class="admin-section" id="section-insights">
+          <div class="admin-page-head">
+            <div>
+              <p class="admin-eyebrow">Insights IA</p>
+              <h2 class="admin-page-title">Insights IA</h2>
+              <p class="admin-page-sub">Sugerencias automáticas de la tienda</p>
+            </div>
+          </div>
+
+          <div class="insights-hero glass">
+            <div class="insights-badge">✨ Powered by IA</div>
+            <h2>Insights inteligentes de tu tienda</h2>
+            <p>Análisis automático basado en inventario, pedidos y comportamiento</p>
+            <button class="btn-primary" onclick="generateInsights()">🔄 Regenerar insights</button>
+          </div>
+          <div class="insights-grid" id="insightsGrid"></div>
+        </section>
+
+        <!-- PROFILE -->
+
+        <!-- FINANZAS -->
+        <section class="admin-section" id="section-finance">
+          <div class="admin-page-head">
+            <div>
+              <p class="admin-eyebrow">Finanzas</p>
+              <h2 class="admin-page-title">Finanzas</h2>
+              <p class="admin-page-sub">Ingresos, gastos y balance demo</p>
+            </div>
+          </div>
+
+          <div class="section-toolbar">
+            <div class="toolbar-left">
+              <h2 style="margin:0;font-size:18px">💰 Finanzas</h2>
+              <span class="admin-table-meta" id="financeMeta">Ingresos y gastos (local)</span>
+            </div>
+            <div class="toolbar-right">
+              <button type="button" class="btn-primary btn-sm" onclick="openFinanceModal('ingreso')">➕ Ingreso</button>
+              <button type="button" class="btn-secondary btn-sm" onclick="openFinanceModal('gasto')">➖ Gasto</button>
+            </div>
+          </div>
+          <div class="admin-stats" id="financeStats"></div>
+          <div class="panel glass">
+            <div class="orders-list" id="financeList"></div>
+          </div>
+        </section>
+
+        <!-- COMPROBANTES (demo sin IA) -->
+        <section class="admin-section" id="section-receipts">
+          <div class="admin-page-head">
+            <div>
+              <p class="admin-eyebrow">Comprobantes</p>
+              <h2 class="admin-page-title">Comprobantes</h2>
+              <p class="admin-page-sub">Registro manual de comprobantes</p>
+            </div>
+          </div>
+
+          <div class="section-toolbar">
+            <div class="toolbar-left">
+              <h2 style="margin:0;font-size:18px">🧾 Comprobantes</h2>
+              <span class="admin-table-meta">Sube facturas / boletas (demo local · sin IA de pago)</span>
+            </div>
+          </div>
+          <div class="panel glass" style="padding:18px">
+            <div class="form-group">
+              <label>Subir imagen o PDF (se guarda en este navegador)</label>
+              <input type="file" id="receiptFileInput" accept="image/*,.pdf" class="admin-search">
+            </div>
+            <div class="form-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px">
+              <div class="form-group">
+                <label>Proveedor / emisor</label>
+                <input type="text" id="receiptVendor" placeholder="Ej: Distribuidora XYZ">
+              </div>
+              <div class="form-group">
+                <label>Monto (S/)</label>
+                <input type="number" id="receiptAmount" step="0.01" min="0" placeholder="0.00">
+              </div>
+              <div class="form-group">
+                <label>Fecha</label>
+                <input type="date" id="receiptDate">
+              </div>
+              <div class="form-group">
+                <label>Nota</label>
+                <input type="text" id="receiptNote" placeholder="Opcional">
+              </div>
+            </div>
+            <button type="button" class="btn-primary" style="margin-top:12px" onclick="saveReceipt()">💾 Guardar comprobante</button>
+            <p style="font-size:12px;color:#94a3b8;margin-top:10px">En el sistema real de William, Gemini extrae RUC, monto y fecha automáticamente. Aquí es registro manual demo.</p>
+          </div>
+          <div class="panel glass" style="margin-top:14px">
+            <div class="orders-list" id="receiptsList"></div>
+          </div>
+        </section>
+
+        <!-- EQUIPO / ROLES -->
+        <section class="admin-section" id="section-team">
+          <div class="admin-page-head">
+            <div>
+              <p class="admin-eyebrow">Equipo</p>
+              <h2 class="admin-page-title">Equipo</h2>
+              <p class="admin-page-sub">Usuarios internos del panel</p>
+            </div>
+          </div>
+
+          <div class="section-toolbar">
+            <div class="toolbar-left">
+              <h2 style="margin:0;font-size:18px">👔 Equipo y roles</h2>
+              <span class="admin-table-meta">Admin · Vendedor (demo localStorage)</span>
+            </div>
+            <div class="toolbar-right">
+              <button type="button" class="btn-primary btn-sm" onclick="openTeamModal()">➕ Usuario staff</button>
+            </div>
+          </div>
+          <div class="panel glass">
+            <div class="orders-list" id="teamList"></div>
+          </div>
+        </section>
+
+        <!-- RESPALDO -->
+        <section class="admin-section" id="section-backup">
+          <div class="admin-page-head">
+            <div>
+              <p class="admin-eyebrow">Respaldo</p>
+              <h2 class="admin-page-title">Respaldo</h2>
+              <p class="admin-page-sub">Exportar e importar datos locales</p>
+            </div>
+          </div>
+
+          <div class="section-toolbar">
+            <div class="toolbar-left">
+              <h2 style="margin:0;font-size:18px">💾 Respaldo y exportación</h2>
+            </div>
+          </div>
+          <div class="dashboard-grid">
+            <div class="panel glass" style="padding:20px">
+              <h3 style="margin:0 0 8px">Descargar respaldo completo</h3>
+              <p style="font-size:13px;color:#94a3b8;margin:0 0 14px">JSON con productos, pedidos, cotizaciones, clientes, finanzas y comprobantes. Equivalente demo a “descargar SQL” del sistema real.</p>
+              <button type="button" class="btn-primary" onclick="downloadStoreBackup()">⬇️ Descargar backup.json</button>
+              <button type="button" class="btn-secondary" style="margin-left:8px" onclick="downloadStoreBackupSQL()">⬇️ Descargar backup.sql (texto)</button>
+            </div>
+            <div class="panel glass" style="padding:20px">
+              <h3 style="margin:0 0 8px">Restaurar desde JSON</h3>
+              <p style="font-size:13px;color:#94a3b8;margin:0 0 14px">Reemplaza los datos locales de este navegador.</p>
+              <input type="file" id="restoreBackupInput" accept="application/json,.json" class="admin-search">
+              <button type="button" class="btn-secondary" style="margin-top:10px" onclick="restoreStoreBackup()">♻️ Restaurar</button>
+            </div>
+            <div class="panel glass" style="padding:20px">
+              <h3 style="margin:0 0 8px">EmailJS</h3>
+              <p style="font-size:13px;color:#94a3b8;margin:0 0 10px">Para correo automático real, crea cuenta en emailjs.com y pega tus IDs en <code>app.js → EMAILJS_CONFIG</code>.</p>
+              <div id="emailjsStatus" style="font-size:13px"></div>
+              <button type="button" class="btn-ghost btn-sm" style="margin-top:8px" onclick="testEmailJSHint()">ℹ️ Cómo activar</button>
+            </div>
+            <div class="panel glass" style="padding:20px">
+              <h3 style="margin:0 0 8px">SEO de imágenes (demo)</h3>
+              <p style="font-size:13px;color:#94a3b8;margin:0 0 10px">Sugiere nombres de archivo SEO a partir del nombre del producto (sin API de pago).</p>
+              <button type="button" class="btn-secondary" onclick="runImageSeoDemo()">✨ Generar sugerencias SEO</button>
+              <div id="seoDemoOut" style="margin-top:12px;font-size:12px;color:#cbd5e1"></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="admin-section" id="section-profile">
+          <div class="profile-layout">
+            <div class="profile-card glass">
+              <div class="profile-avatar-lg" id="profileAvatarLg">A</div>
+              <h2 id="profileDisplayName">Administrador</h2>
+              <p class="profile-role">Administrador · Acceso total</p>
+              <div class="profile-meta" id="profileMeta"></div>
+            </div>
+            <div class="profile-form-card glass">
+              <h3>Editar perfil</h3>
+              <form id="adminProfileForm">
+                <div class="form-grid">
+                  <div class="form-group">
+                    <label>Nombre</label>
+                    <input type="text" id="adminProfName" required>
+                  </div>
+                  <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="adminProfEmail" disabled>
+                  </div>
+                  <div class="form-group">
+                    <label>Teléfono</label>
+                    <input type="tel" id="adminProfPhone" placeholder="Opcional">
+                  </div>
+                  <div class="form-group">
+                    <label>Dirección</label>
+                    <input type="text" id="adminProfAddress" placeholder="Opcional">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label>Nueva contraseña (dejar vacío para no cambiar)</label>
+                  <input type="password" id="adminProfPassword" minlength="6" placeholder="••••••••">
+                </div>
+                <button type="submit" class="btn-primary">💾 Guardar cambios</button>
+              </form>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Modal registro de cobro -->
+  <div class="modal-overlay" id="paymentLogModal">
+    <div class="modal modal-form" style="max-width:420px">
+      <button class="modal-close" data-close>&times;</button>
+      <h2 style="margin-bottom:16px">💵 Registrar cobro</h2>
+      <input type="hidden" id="payLogOrderId">
+      <div class="form-group">
+        <label>Monto cobrado (S/)</label>
+        <input type="number" id="payLogAmount" step="0.01" min="0" required>
+      </div>
+      <div class="form-group">
+        <label>Método</label>
+        <select id="payLogMethod" class="admin-select" style="width:100%">
+          <option value="yape">Yape</option>
+          <option value="plin">Plin</option>
+          <option value="transferencia">Transferencia</option>
+          <option value="efectivo">Efectivo</option>
+          <option value="tarjeta">Tarjeta</option>
+          <option value="otro">Otro</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Nota</label>
+        <input type="text" id="payLogNote" placeholder="Ej: operación 12345">
+      </div>
+      <button type="button" class="btn-primary" onclick="savePaymentLog()">Guardar cobro</button>
+    </div>
+  </div>
+
+  <!-- Modal finanzas -->
+  <div class="modal-overlay" id="financeModal">
+    <div class="modal modal-form" style="max-width:420px">
+      <button class="modal-close" data-close>&times;</button>
+      <h2 id="financeModalTitle" style="margin-bottom:16px">Movimiento</h2>
+      <input type="hidden" id="financeType">
+      <div class="form-group">
+        <label>Concepto</label>
+        <input type="text" id="financeConcept" required placeholder="Ej: Venta pedido ORD-...">
+      </div>
+      <div class="form-group">
+        <label>Monto (S/)</label>
+        <input type="number" id="financeAmount" step="0.01" min="0" required>
+      </div>
+      <div class="form-group">
+        <label>Fecha</label>
+        <input type="date" id="financeDate">
+      </div>
+      <div class="form-group">
+        <label>Nota</label>
+        <input type="text" id="financeNote">
+      </div>
+      <button type="button" class="btn-primary" onclick="saveFinanceEntry()">Guardar</button>
+    </div>
+  </div>
+
+  <!-- Modal equipo -->
+  <div class="modal-overlay" id="teamModal">
+    <div class="modal modal-form" style="max-width:420px">
+      <button class="modal-close" data-close>&times;</button>
+      <h2 style="margin-bottom:16px">Usuario del equipo</h2>
+      <div class="form-group">
+        <label>Nombre</label>
+        <input type="text" id="teamName" required>
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" id="teamEmail" required>
+      </div>
+      <div class="form-group">
+        <label>Rol</label>
+        <select id="teamRole" class="admin-select" style="width:100%">
+          <option value="admin">Administrador</option>
+          <option value="vendedor">Vendedor</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Contraseña</label>
+        <input type="password" id="teamPassword" minlength="6" value="vendedor123">
+      </div>
+      <button type="button" class="btn-primary" onclick="saveTeamMember()">Guardar</button>
+    </div>
+  </div>
+
+  <!-- Modal Producto -->
+  <div class="modal-overlay" id="productModal">
+    <div class="modal modal-form">
+      <button class="modal-close" data-close>&times;</button>
+      <h2 id="productModalTitle" style="margin-bottom: 20px;">Agregar Producto</h2>
+      <form id="productForm">
+        <input type="hidden" id="productId">
+        <div class="form-group full-width">
+          <label>📷 Imágenes del producto (IA organiza)</label>
+          <div class="upload-preview" id="uploadPreview">
+            <img id="imagePreview" src="" alt="Vista previa" style="display: none;">
+            <span id="previewPlaceholder" style="color: var(--color-text-secondary);">Imagen principal · sube una o varias</span>
+          </div>
+          <label for="imageInput" class="btn-secondary btn-block" style="display: block; text-align: center; cursor: pointer; margin-top: 8px;">
+            📤 Subir imágenes (máx 2MB c/u · hasta 6)
+          </label>
+          <input type="file" id="imageInput" accept="image/*" multiple style="display: none;">
+          <div class="image-gallery-grid" id="imageGalleryGrid"></div>
+          <div id="imageAiInsights" class="image-ai-insights"></div>
+        </div>
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Nombre *</label>
+            <input type="text" id="pName" required placeholder="Ej: Box 12 Frutillas">
+          </div>
+          <div class="form-group">
+            <label>SKU</label>
+            <input type="text" id="pSku" placeholder="Código único">
+          </div>
+          <div class="form-group">
+            <label>Categoría *</label>
+            <select id="pCategory" required>
+              <option value="Productos NFC">Productos NFC</option>
+              <option value="Tecnología NFC">Tecnología NFC</option>
+              <option value="Cuadernos">Cuadernos</option>
+              <option value="Lanyards">Lanyards</option>
+              <option value="Tomatodos">Tomatodos</option>
+              <option value="Tazas">Tazas</option>
+              <option value="Lapiceros">Lapiceros</option>
+              <option value="Productos Publicitarios">Productos Publicitarios</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Stock *</label>
+            <input type="number" id="pStock" min="0" required placeholder="0">
+          </div>
+        </div>
+
+        <!-- Gestión de precio: costo + rentabilidad → sugerido -->
+        <div class="pricing-panel full-width">
+          <div class="pricing-panel-head">
+            <strong>💰 Precio y rentabilidad</strong>
+            <small>Costo + margen → precio sugerido. Tú defines el precio final.</small>
+          </div>
+          <div class="form-grid">
+            <div class="form-group">
+              <label>Precio costo (S/)</label>
+              <input type="number" id="pCost" step="0.01" min="0" value="0" placeholder="0">
+            </div>
+            <div class="form-group">
+              <label>Rentabilidad %</label>
+              <input type="number" id="pMargin" step="0.1" min="0" max="500" value="40" placeholder="40">
+            </div>
+          </div>
+          <div class="pricing-suggest" id="pricingSuggest">
+            Sugerido: <strong id="pSuggested">S/ 0.00</strong>
+            · Ganancia est.: <strong id="pEstProfit">S/ 0.00</strong>
+          </div>
+          <div class="form-grid">
+            <div class="form-group">
+              <label>Precio venta final (sin IGV) — tú decides *</label>
+              <input type="number" id="pPrice" step="0.01" min="0" required placeholder="0.00">
+            </div>
+            <div class="form-group">
+              <label>Precio anterior / tachado (opcional)</label>
+              <input type="number" id="pOldPrice" step="0.01" min="0" placeholder="Opcional">
+            </div>
+          </div>
+          <div class="pricing-suggest pricing-final" id="pricingFinal">
+            + IGV: <strong id="pIgvAmount">S/ 0.00</strong>
+            · Precio con IGV: <strong id="pPriceWithIgv">S/ 0.00</strong>
+            · Ganancia real: <strong id="pRealProfit">S/ 0.00</strong>
+          </div>
+          <div class="form-grid">
+            <div class="form-group">
+              <label>IGV</label>
+              <select id="pIgv">
+                <option value="18">Sí (18%)</option>
+                <option value="0">No (0%)</option>
+                <option value="10">10%</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Delivery</label>
+              <select id="pDelivery">
+                <option value="gratis">Gratis</option>
+                <option value="pago">De pago</option>
+                <option value="retiro">Solo retiro</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Valoración (0-5)</label>
+            <input type="number" id="pRating" step="0.1" min="0" max="5" value="4.0">
+          </div>
+          <div class="form-group">
+            <label>Nº de Reseñas</label>
+            <input type="number" id="pReviews" min="0" value="0">
+          </div>
+        </div>
+        <div class="form-group full-width">
+          <label>Descripción</label>
+          <textarea id="pDescription" rows="3" placeholder="Detalle del producto..."></textarea>
+        </div>
+        <div class="form-group full-width">
+          <label>Características (separadas por comas)</label>
+          <textarea id="pFeatures" rows="2" placeholder="Ej: Bluetooth 5.0, 30h batería, Resistente al agua"></textarea>
+        </div>
+        <div class="form-row">
+          <label class="switch-label">
+            <input type="checkbox" id="pOffer"> 🔥 Marcar como oferta
+          </label>
+          <label class="switch-label">
+            <input type="checkbox" id="pInStock" checked> ✅ Disponible
+          </label>
+          <label class="switch-label">
+            <input type="checkbox" id="pIsNew"> ✨ Producto nuevo
+          </label>
+        </div>
+        <div class="form-actions">
+          <button type="button" class="btn-secondary" data-close>Cancelar</button>
+          <button type="button" class="btn-ghost" id="pApplySuggested" title="Usar precio sugerido">Usar sugerido</button>
+          <button type="submit" class="btn-primary">💾 Guardar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+  <div class="admin-bg-orbs" aria-hidden="true">
+    <span class="orb orb-1"></span>
+    <span class="orb orb-2"></span>
+    <span class="orb orb-3"></span>
+  </div>
+
+  <script src="app.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>

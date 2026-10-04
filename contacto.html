@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#c9a227">
+  <title>Contacto | Absolut 360</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="live-ticker" id="promoTicker" role="marquee" aria-label="Promociones">
+    <div class="ticker-track">
+      <span class="ticker-item">🎟️ Cupón <strong>BIENVENIDO10</strong> → 10% dto.</span>
+      <span class="ticker-item">🔥 Ofertas del día</span>
+      <span class="ticker-item">🛡️ Garantía 1 año</span>
+      <span class="ticker-item">💬 Chat 24/7</span>
+      <span class="ticker-item">🚚 Envío gratis +S/50</span>
+      <span class="ticker-item">🎟️ Cupón <strong>BIENVENIDO10</strong> → 10% dto.</span>
+      <span class="ticker-item">🔥 Ofertas del día</span>
+      <span class="ticker-item">🛡️ Garantía 1 año</span>
+      <span class="ticker-item">💬 Chat 24/7</span>
+      <span class="ticker-item">🚚 Envío gratis +S/50</span>
+    </div>
+  </div>
+
+    <div class="nav-backdrop" id="navBackdrop" aria-hidden="true"></div>
+  <header class="site-header"><div class="header-inner">
+    <div class="header-left">
+      <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" type="button">
+        <span></span><span></span><span></span>
+      </button>
+      <a href="app.html" class="logo" aria-label="Absolut 360">
+        <img src="images/logo-absolut360.png" alt="Absolut 360" class="logo-img">
+        <span class="logo-text-wrap">
+          <span class="logo-text">Absolut 360</span>
+          <span class="logo-tagline">Agencia de publicidad</span>
+        </span>
+      </a>
+    </div>
+    <nav class="main-nav" id="mainNav">
+      <a href="app.html">Inicio</a>
+      <a href="catalogo.html">Categorías</a>
+      <a href="ofertas.html">Ofertas</a>
+      <a href="contacto.html" class="active">Contacto</a>
+    </nav>
+    <div class="header-actions">
+      <button class="theme-toggle" id="themeToggle" title="Cambiar tema" aria-label="Cambiar tema">🌙</button>
+      <button class="cart-btn" id="cartBtn" type="button" aria-label="Carrito">
+        🛒 <span class="cart-count" id="cartCount">0</span>
+      </button>
+      <div id="authArea" class="auth-area"></div>
+    </div>
+  </div></header>
+
+  <section class="hero-section">
+    <h1>📞 Contáctanos</h1>
+    <p>Estamos aquí para ayudarte. ¡Escríbenos y te responderemos pronto!</p>
+  </section>
+
+  <main class="contact-container">
+    <div class="contact-grid">
+      <div class="contact-card">
+        <div class="contact-icon">📍</div>
+        <h3>Dirección</h3>
+        <p>Av. Principal 123<br>Lima, Perú</p>
+      </div>
+      <div class="contact-card">
+        <div class="contact-icon">📞</div>
+        <h3>Teléfono</h3>
+        <p>(01) 456-7890<br>Lun - Vie: 9:00 - 18:00</p>
+      </div>
+      <div class="contact-card">
+        <div class="contact-icon">✉️</div>
+        <h3>Email</h3>
+        <p>comercial@absolut-360.com<br>comercial@absolut-360.com</p>
+      </div>
+      <div class="contact-card contact-brand-card">
+        <img src="image.png" alt="Absolut 360" class="contact-logo">
+        <h3>Absolut 360</h3>
+        <p>Agencia de publicidad · NFC, branding y merchandising corporativo</p>
+      </div>
+    </div>
+
+    <form class="contact-form" id="contactForm">
+      <h2>💬 Envíanos un mensaje</h2>
+      <p style="color: var(--color-text-secondary); margin-bottom: 24px;">Completa el formulario y te responderemos lo antes posible</p>
+      
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Nombre completo *</label>
+          <input type="text" required placeholder="Tu nombre">
+        </div>
+        <div class="form-group">
+          <label>Email *</label>
+          <input type="email" required placeholder="tu@email.com">
+        </div>
+        <div class="form-group">
+          <label>Teléfono</label>
+          <input type="tel" placeholder="(opcional)">
+        </div>
+        <div class="form-group">
+          <label>Asunto *</label>
+          <select required>
+            <option value="">Selecciona un asunto</option>
+            <option>Consulta general</option>
+            <option>Estado de pedido</option>
+            <option>Devolución</option>
+            <option>Soporte técnico</option>
+            <option>Otro</option>
+          </select>
+        </div>
+      </div>
+      
+      <div class="form-group full-width">
+        <label>Mensaje *</label>
+        <textarea rows="5" required placeholder="Escribe tu mensaje aquí..."></textarea>
+      </div>
+      
+      <button type="submit" class="btn-primary btn-block">📤 Enviar Mensaje</button>
+    </form>
+
+    <div style="margin-top: 48px; text-align: center;">
+      <h2 style="margin-bottom: 24px;">❓ Preguntas Frecuentes</h2>
+      <div style="display: grid; gap: 16px; text-align: left;">
+        <details style="background: var(--color-bg); padding: 20px; border-radius: var(--radius); border: 1px solid var(--color-border); cursor: pointer;">
+          <summary style="font-weight: 600; margin-bottom: 8px;">📦 ¿Cuánto tarda el envío?</summary>
+          <p style="color: var(--color-text-secondary); margin-top: 12px;">Los envíos nacionales tardan entre 3-5 días hábiles. Los envíos express llegan en 24-48 horas.</p>
+        </details>
+        <details style="background: var(--color-bg); padding: 20px; border-radius: var(--radius); border: 1px solid var(--color-border); cursor: pointer;">
+          <summary style="font-weight: 600; margin-bottom: 8px;">🔄 ¿Puedo devolver un producto?</summary>
+          <p style="color: var(--color-text-secondary); margin-top: 12px;">Sí, tienes 30 días para devolver cualquier producto sin costo adicional.</p>
+        </details>
+        <details style="background: var(--color-bg); padding: 20px; border-radius: var(--radius); border: 1px solid var(--color-border); cursor: pointer;">
+          <summary style="font-weight: 600; margin-bottom: 8px;">💳 ¿Qué métodos de pago aceptan?</summary>
+          <p style="color: var(--color-text-secondary); margin-top: 12px;">Aceptamos <strong>Yape</strong>, <strong>Plin</strong> (QR), <strong>tarjeta de crédito/débito</strong>, transferencias y pago contra entrega.</p>
+        </details>
+        <details style="background: var(--color-bg); padding: 20px; border-radius: var(--radius); border: 1px solid var(--color-border); cursor: pointer;">
+          <summary style="font-weight: 600; margin-bottom: 8px;">🎟️ ¿Tienen cupones de descuento?</summary>
+          <p style="color: var(--color-text-secondary); margin-top: 12px;">Sí. Prueba: <strong>BIENVENIDO10</strong> (10%), <strong>AHORRA20</strong> (20% mín. $100) o <strong>ENVIOGRATIS</strong> ($5 de descuento).</p>
+        </details>
+      </div>
+    </div>
+  </main>
+
+  
+  <!-- Modal Auth -->
+  <div class="modal-overlay" id="authModal">
+    <div class="modal modal-auth login-card">
+      <button class="modal-close" data-close>&times;</button>
+      <div class="login-card-brand">
+        <span class="login-card-icon">🛒</span>
+        <strong>Absolut 360</strong>
+        <small>Accede a tu cuenta</small>
+      </div>
+      <div class="auth-tabs">
+        <button class="auth-tab active" data-tab="login">Iniciar sesión</button>
+        <button class="auth-tab" data-tab="register">Registrarse</button>
+      </div>
+      <div id="loginFormBox">
+        <form id="loginForm">
+          <div class="form-group"><label>Email</label><input type="email" id="loginEmail" required placeholder="tu@email.com"></div>
+          <div class="form-group"><label>Contraseña</label><input type="password" id="loginPassword" required placeholder="••••••••"></div>
+          <button type="submit" class="btn-primary btn-block">Entrar</button>
+        </form>
+        <div class="auth-demo">
+          <p><strong>Demo Admin:</strong> admin@tutienda.com / admin123</p>
+          <p><strong>Demo Cliente:</strong> cliente@demo.com / cliente123</p>
+        </div>
+      </div>
+      <div id="registerFormBox" style="display:none">
+        <form id="registerForm">
+          <div class="form-group"><label>Nombre</label><input type="text" id="regName" required></div>
+          <div class="form-group"><label>Email</label><input type="email" id="regEmail" required></div>
+          <div class="form-group"><label>Contraseña</label><input type="password" id="regPassword" required minlength="6"></div>
+          <button type="submit" class="btn-primary btn-block">Crear cuenta</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dashboard Cliente -->
+  <div class="modal-overlay" id="clientDashboard">
+    <div class="modal modal-client-dash">
+      <div class="cd-header">
+        <div>
+          <h2>👤 Mi Dashboard</h2>
+          <div id="clientDashStats" class="cd-stats-row"></div>
+        </div>
+        <button class="modal-close" data-close>&times;</button>
+      </div>
+      <div class="cd-tabs">
+        <button class="cd-tab active" data-tab="overview" onclick="switchClientTab('overview')">Resumen</button>
+        <button class="cd-tab" data-tab="loyalty" onclick="switchClientTab('loyalty')">📱 Tarjeta</button>
+        <button class="cd-tab" data-tab="orders" onclick="switchClientTab('orders')">Pedidos</button>
+        <button class="cd-tab" data-tab="favorites" onclick="switchClientTab('favorites')">Favoritos</button>
+        <button class="cd-tab" data-tab="profile" onclick="switchClientTab('profile')">Perfil</button>
+      </div>
+      <div id="clientDashBody" class="cd-body"></div>
+    </div>
+  </div>
+
+  <!-- Modal Carrito -->
+  <div class="modal-overlay" id="cartModal">
+    <div class="modal modal-cart">
+      <button class="modal-close" data-close>&times;</button>
+      <h2>🛒 Tu Carrito</h2>
+      <div id="cartItems"></div>
+      <div class="cart-total">Total: $<span id="cartTotal">0.00</span></div>
+      <button class="btn-primary btn-block" id="checkoutBtn">💳 Pagar · Yape / Plin / Tarjeta</button>
+    </div>
+  </div>
+
+  <button class="cart-floating" id="cartFloating">
+    🛒
+    <span class="cart-count" id="cartCount">0</span>
+  </button>
+
+  <div class="chat-widget">
+    <button class="chat-toggle" id="chatToggle">💬</button>
+    <div class="chat-box" id="chatBox">
+      <div class="chat-header">
+        <div class="chat-avatar">🤖</div>
+        <div class="chat-header-info"><h4>Asistente IA Absolut 360</h4><p>En línea</p></div>
+      </div>
+      <div class="chat-messages" id="chatMessages"></div>
+      <div class="chat-input">
+        <input type="text" id="chatInput" placeholder="Productos, ofertas o mejorar imagen...">
+        <button id="chatSend">➤</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <footer class="site-footer">
+    <p>© 2026 Absolut 360. Todos los derechos reservados.</p>
+  </footer>
+
+  <script src="loyicard-client.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
